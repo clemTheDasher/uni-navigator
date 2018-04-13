@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view>
+  <uni-navigator navigator="{{navigator}}" current="{{current}}" exclude="{{['log']}}" bind:change="changeViewHandler"></uni-navigator>
+</view>
+<view class="container">
+  <block wx:if="{{view === 'FRONT_PAGE'}}">
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{view === 'WELCOME'}}">
+    <view class="usermotto">
+      <text class="user-motto">{{motto}}</text>
+    </view>
+  </block>
+</view>

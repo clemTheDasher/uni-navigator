@@ -1,0 +1,19 @@
+.u-navigator {
+  display: flex;
+  flex-direction: row;
+  background-color: #333;
+  opacity: 0.9;
+  color: #fff;
+}
+.u-navigator__item {
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 30rpx 0;
+}
+.u-navigator__item_active {
+  color: #f00;
+  border-bottom: 1rpx solid #f00;
+}

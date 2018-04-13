@@ -1,0 +1,22 @@
+<wxs module="preprocessor">
+    var isOneOf = function(idx, exclude) {
+        return exclude.indexOf(idx) > -1;
+    };
+
+    module.exports.isOneOf = isOneOf;
+</wxs>
+<view class="u-navigator">
+    <block wx:for="{{navigator}}" wx:for-index="idx" wx:key="id">
+        <block wx:if="{{preprocessor.isOneOf(idx, exclude)}}"></block>      
+        <!-- The type of the navigator item is bindtap trigger  -->
+        <block wx:elif="{{item.type === 'bindtap'}}">
+        <view data-data="{{item.data}}" class="u-navigator__item {{(current===idx) ? 'u-navigator__item_active' : ''}} util-center" bindtap="{{item.next}}">{{item.title}}</view>
+        </block>
+        <!-- The type of the navigator item is a navigator  -->
+        <block wx:else>
+        <navigator class="u-navigator__item {{(current===idx) ? 'u-navigator__item_active' : ''}} util-center" url="{{item.next}}" open-type="{{item.type}}">
+            {{item.title}}
+        </navigator>
+        </block>
+    </block>
+</view>
